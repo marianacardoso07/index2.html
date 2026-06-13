@@ -1,0 +1,63 @@
+:root {
+  --cor-primaria: #0497fa;
+  --cor-secundaria: #007acc;
+  --cor-fundo: #f4f6f9;
+  --cor-rodape: #111111;
+  --cor-texto: #222222;
+  --cor-branco: #ffffff;
+  --cor-hover: #00bfff;
+  --fonte-principal: Arial, Helvetica, sans-serif;
+  --raio-borda: 8px;
+  --sombra: 0 2px 12px rgba(0,0,0,0.15);
+  --transicao: 0.3s ease;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--fonte-principal); background: var(--cor-fundo); color: var(--cor-texto); }
+
+header { background: var(--cor-primaria); color: var(--cor-branco); padding: 20px; text-align: center; }
+.header-topo { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.banner { width: 160px; height: auto; display: block; }
+header h1 { font-size: 1.6rem; }
+
+nav { position: relative; margin-top: 12px; }
+.hamburger { display: none; background: none; border: 2px solid var(--cor-branco); color: var(--cor-branco); font-size: 1.6rem; padding: 4px 12px; border-radius: var(--raio-borda); cursor: pointer; transition: background var(--transicao); }
+.hamburger:hover { background: rgba(255,255,255,0.2); }
+.nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; list-style: none; padding: 0; }
+.nav-links a { color: var(--cor-branco); text-decoration: none; font-weight: bold; padding: 6px 12px; border-radius: var(--raio-borda); transition: background var(--transicao), color var(--transicao); }
+.nav-links a:hover, .nav-links a.ativo { background: rgba(255,255,255,0.25); color: var(--cor-hover); }
+
+main { background: var(--cor-branco); margin: 24px auto; padding: 28px; max-width: 920px; border-radius: var(--raio-borda); box-shadow: var(--sombra); }
+main h2 { color: var(--cor-primaria); margin-bottom: 14px; border-bottom: 2px solid var(--cor-primaria); padding-bottom: 6px; }
+main p, main li { line-height: 1.8; margin-bottom: 10px; }
+main ul { padding-left: 20px; }
+main img { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: var(--raio-borda); box-shadow: var(--sombra); }
+
+@keyframes fadeEntrada { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulsaBorda { 0%,100% { border-color: var(--cor-primaria); } 50% { border-color: var(--cor-hover); } }
+main { animation: fadeEntrada 0.6s ease both; }
+header h1 { animation: fadeEntrada 0.5s ease 0.1s both; }
+
+form { display: flex; flex-direction: column; gap: 14px; max-width: 480px; margin-top: 16px; }
+form input, form textarea { padding: 10px 14px; border: 2px solid #ccc; border-radius: var(--raio-borda); font-size: 1rem; font-family: var(--fonte-principal); transition: border-color var(--transicao); animation: pulsaBorda 2s ease infinite; }
+form input:focus, form textarea:focus { outline: none; border-color: var(--cor-primaria); animation: none; }
+form button { padding: 12px 24px; background: var(--cor-primaria); color: var(--cor-branco); border: none; border-radius: var(--raio-borda); font-size: 1rem; font-weight: bold; cursor: pointer; transition: background var(--transicao), transform var(--transicao); }
+form button:hover { background: var(--cor-secundaria); transform: scale(1.03); }
+
+.cards-endereco { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+.card { flex: 1 1 200px; background: var(--cor-fundo); border-left: 4px solid var(--cor-primaria); border-radius: var(--raio-borda); padding: 16px 20px; box-shadow: var(--sombra); }
+.card h3 { color: var(--cor-primaria); margin-bottom: 8px; }
+
+.galeria-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+.galeria-grid img { flex: 1 1 260px; margin: 0; }
+
+footer { background: var(--cor-rodape); color: var(--cor-branco); text-align: center; padding: 18px; margin-top: 20px; }
+footer p { margin: 4px 0; }
+
+@media (max-width: 700px) {
+  header h1 { font-size: 1.2rem; }
+  .hamburger { display: block; margin: 8px auto 0; }
+  .nav-links { display: none; flex-direction: column; align-items: center; gap: 4px; margin-top: 10px; background: rgba(0,0,0,0.15); border-radius: var(--raio-borda); padding: 10px 0; }
+  .nav-links.aberto { display: flex; }
+  main { margin: 14px 10px; padding: 18px; }
+  .cards-endereco { flex-direction: column; }
+}
